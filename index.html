@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #333;
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+    <script>
+        function fetchData() {
+            fetch('https://duplicate2991.github.io/sujoy629655/data.txt') // Replace with your actual text file URL
+                .then(response => response.text())
+                .then(data => {
+                    const heading = document.getElementById('loading-text');
+                    heading.textContent = data.trim() ? data : 'Loading..., Wait Karo Urvi...';
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    document.getElementById('loading-text').textContent = 'Loading..., Wait Karo Urvi...';
+                });
+        }
+        setInterval(fetchData, 5000);
+        window.onload = fetchData;
+    </script>
+</head>
+<body>
+    <h1 id="loading-text">Loading..., Wait Karo Urvi...</h1>
+</body>
+</html>
